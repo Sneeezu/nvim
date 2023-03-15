@@ -28,11 +28,12 @@ return {
 
 	{
 		"echasnovski/mini.ai",
+		event = "VeryLazy",
 
-		keys = {
-			{ "a", mode = { "x", "o" } },
-			{ "i", mode = { "x", "o" } },
-		},
+		-- keys = {
+		-- 	{ "a", mode = { "x", "o" } },
+		-- 	{ "i", mode = { "x", "o" } },
+		-- },
 
 		dependencies = {
 			{
