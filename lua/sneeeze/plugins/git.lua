@@ -47,6 +47,8 @@ return {
 					map("n", "<leader>gp", "<cmd>Gitsigns preview_hunk<CR>", "Preview hunk")
 					map("n", "<leader>grh", "<cmd>Gitsigns reset_hunk<CR>", "Reset hunk")
 					map("n", "<leader>grb", "<cmd>Gitsigns reset_buffer<CR>", "Reset buffer")
+					map("n", "<leader>gSh", "<cmd>Gitsigns stage_hunk<CR>", "Stage hunk")
+					map("n", "<leader>gSb", "<cmd>Gitsigns stage_buffer<CR>", "Stage buffer")
 					map({ "x", "o" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "Select hunk")
 				end,
 			}
