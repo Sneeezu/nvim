@@ -49,12 +49,15 @@ return {
 
 				custom_highlights = function(colors)
 					return {
+						TabLine = { fg = colors.overlay1, bg = colors.mantle },
+						TabLineSel = { fg = colors.text, bg = colors.surface0 },
+
 						DiagnosticVirtualTextHint = { bg = colors.none },
 						DiagnosticVirtualTextInfo = { bg = colors.none },
 						DiagnosticVirtualTextWarn = { bg = colors.none },
 						DiagnosticVirtualTextError = { bg = colors.none },
-						TabLine = { fg = colors.overlay1, bg = colors.mantle },
-						TabLineSel = { fg = colors.text, bg = colors.surface0 },
+
+						MatchParen = { fg = colors.peach, bg = colors.none, style = { "bold" } },
 					}
 				end,
 			}
