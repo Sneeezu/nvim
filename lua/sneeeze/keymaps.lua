@@ -15,10 +15,16 @@ map("n", "<A-p>", "<cmd>vertical resize +2<CR>")
 map("s", "<C-h>", [[<C-g>"_c]])
 map("s", "<BS>", [[<C-g>"_c]])
 
+map("n", "J", "mzJ`z")
+map("n", "n", "nzzzv")
+map("n", "N", "Nzzzv")
+map("n", "<C-u>", "<C-u>zz")
+map("n", "<C-d>", "<C-d>zz")
+
 map("n", "]b", "<cmd>bnext<CR>")
 map("n", "[b", "<cmd>bprevious<CR>")
-map("n", "]q", "<cmd>cnext<CR>")
-map("n", "[q", "<cmd>cprevious<CR>")
+map("n", "]q", "<cmd>cnext<CR>zz")
+map("n", "[q", "<cmd>cprevious<CR>zz")
 
 map("n", "<leader>t", vim.cmd.Ex, { desc = "Open netrw" })
 map("n", "<leader>s", "<cmd>set spell!<CR>", { desc = "Toggle spell" })
