@@ -6,11 +6,6 @@ map({ "n", "v" }, "<leader>p", [["+p]])
 map({ "n", "v" }, "<leader>P", [["+P]])
 map({ "n", "v" }, "<leader>d", [["_d]])
 
-map("n", "<A-h>", "<C-w>h")
-map("n", "<A-j>", "<C-w>j")
-map("n", "<A-k>", "<C-w>k")
-map("n", "<A-l>", "<C-w>l")
-
 map("n", "<A-u>", "<cmd>vertical resize -2<CR>")
 map("n", "<A-i>", "<cmd>resize +2<CR>")
 map("n", "<A-o>", "<cmd>resize -2<CR>")
