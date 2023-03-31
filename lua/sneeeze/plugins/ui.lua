@@ -51,6 +51,7 @@ return {
 					return {
 						TabLine = { fg = colors.overlay1, bg = colors.mantle },
 						TabLineSel = { fg = colors.text, bg = colors.surface0 },
+						TabLineFill = { bg = colors.mantle },
 
 						DiagnosticVirtualTextHint = { bg = colors.none },
 						DiagnosticVirtualTextInfo = { bg = colors.none },
