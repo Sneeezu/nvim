@@ -93,34 +93,38 @@ return {
 				end,
 				desc = "Open harpoon quick menu",
 			},
+			{
+				"<C-h>",
+				function()
+					require("harpoon.ui").nav_file(1)
+				end,
+				desc = "Navigate to first harpoon file",
+			},
+			{
+				"<C-t>",
+				function()
+					require("harpoon.ui").nav_file(2)
+				end,
+				desc = "Navigate to second harpoon file",
+			},
+			{
+				"<C-n>",
+				function()
+					require("harpoon.ui").nav_file(3)
+				end,
+				desc = "Navigate to third harpoon file",
+			},
+			{
+				"<C-s>",
+				function()
+					require("harpoon.ui").nav_file(4)
+				end,
+				desc = "Navigate to fourth harpoon file",
+			},
 		},
 
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-		},
-	},
-
-	{
-		"cbochs/portal.nvim",
-
-		cmd = "Portal",
-
-		keys = {
-			{ "<leader>i", "<cmd>Portal jumplist forward<CR>", desc = "Portal jumplist forward" },
-			{ "<leader>o", "<cmd>Portal jumplist backward<CR>", desc = "Portal jumplist backward" },
-			{ "<leader>h", "<cmd>Portal harpoon forward<CR>", desc = "Portal harpoon forward" },
-		},
-
-		dependencies = {
-			"ThePrimeagen/harpoon",
-		},
-
-		opts = {
-			labels = { "k", "j", "l", "h", "n", "u" },
-
-			window_options = {
-				border = "rounded",
-			},
 		},
 	},
 }
