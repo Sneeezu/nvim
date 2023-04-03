@@ -168,7 +168,7 @@ return {
 						select = true,
 					},
 
-					["<C-e>"] = cmp.mapping {
+					["<C-c>"] = cmp.mapping {
 						i = cmp.mapping.abort(),
 						c = cmp.mapping.close(),
 					},
