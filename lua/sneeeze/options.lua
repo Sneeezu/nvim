@@ -60,13 +60,3 @@ vim.opt.listchars:append {
 	conceal = "┊",
 	nbsp = "␣",
 }
-
-vim.opt.fillchars:append {
-	horiz = "━",
-	horizup = "┻",
-	horizdown = "┳",
-	vert = "┃",
-	vertleft = "┫",
-	vertright = "┣",
-	verthoriz = "╋",
-}
