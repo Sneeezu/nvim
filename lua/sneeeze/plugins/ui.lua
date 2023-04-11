@@ -58,6 +58,10 @@ return {
 						DiagnosticVirtualTextWarn = { bg = colors.none },
 						DiagnosticVirtualTextError = { bg = colors.none },
 
+						-- classic catppuccin
+						WhichKey = { fg = colors.flamingo },
+						WhichKeyBorder = { fg = colors.blue },
+						TelescopeNormal = { link = "Normal" },
 						MatchParen = { fg = colors.peach, bg = colors.none, style = { "bold" } },
 					}
 				end,
