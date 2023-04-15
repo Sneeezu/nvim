@@ -1,5 +1,4 @@
 return {
-	-- Theme
 	{
 		"catppuccin/nvim",
 		priority = 1000,
@@ -84,7 +83,6 @@ return {
 		end,
 	},
 
-	-- Statusline
 	{
 		"tjdevries/express_line.nvim",
 

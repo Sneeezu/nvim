@@ -23,7 +23,6 @@ return {
 		config = true,
 	},
 
-	-- Comments
 	{
 		"JoosepAlviste/nvim-ts-context-commentstring",
 		lazy = true,

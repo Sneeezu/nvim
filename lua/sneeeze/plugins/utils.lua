@@ -1,5 +1,4 @@
 return {
-	-- Markdown preview
 	{
 		"iamcco/markdown-preview.nvim",
 		ft = { "markdown" },
@@ -9,7 +8,6 @@ return {
 		end,
 	},
 
-	-- Discord presence
 	{
 		"andweeb/presence.nvim",
 		event = { "BufReadPost", "BufNewFile" },
