@@ -6,7 +6,6 @@ return {
 		event = { "BufReadPost", "BufNewFile" },
 
 		dependencies = {
-			"romgrk/nvim-treesitter-context",
 			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
 
@@ -52,6 +51,16 @@ return {
 				},
 			}
 		end,
+	},
+
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+
+		event = { "BufEnter", "BufNewFile" },
+
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+		},
 	},
 
 	{
