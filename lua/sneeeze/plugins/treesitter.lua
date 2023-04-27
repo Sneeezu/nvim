@@ -55,7 +55,6 @@ return {
 
 	{
 		"nvim-treesitter/nvim-treesitter-context",
-
 		event = { "BufEnter", "BufNewFile" },
 
 		dependencies = {
@@ -65,7 +64,6 @@ return {
 
 	{
 		"echasnovski/mini.ai",
-
 		event = { "BufEnter", "BufNewFile" },
 
 		dependencies = {
