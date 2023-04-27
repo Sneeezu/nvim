@@ -182,10 +182,19 @@ return {
 					},
 				},
 
+				ruff_lsp = {
+					on_attach = function(client)
+						client.server_capabilities.hoverProvider = false
+					end,
+				},
+
 				html = {},
+				cssls = {},
 				pyright = {},
 				tsserver = {},
 				jsonls = {},
+				taplo = {},
+				bashls = {},
 			}
 
 			local format = function()
