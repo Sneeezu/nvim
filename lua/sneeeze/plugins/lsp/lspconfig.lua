@@ -12,6 +12,7 @@ return {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"nvim-telescope/telescope.nvim",
+			"ray-x/lsp_signature.nvim",
 
 			{
 				"folke/neodev.nvim",
@@ -255,7 +256,6 @@ return {
 				map("n", "<leader>cr", vim.lsp.buf.rename, "Rename")
 				map("n", "<leader>ca", vim.lsp.buf.code_action, "Code action")
 				map("n", "<leader>lf", format, "Format")
-				map({ "i", "s" }, "<C-s>", vim.lsp.buf.signature_help, "Signature help")
 			end
 
 			vim.tbl_deep_extend("force", capabilities, default_capabilities)
@@ -269,6 +269,25 @@ return {
 				end
 
 				config.on_attach = function(client, buffer)
+					if client.server_capabilities.signatureHelpProvider then
+						require("lsp_signature").on_attach({
+							bind = true,
+							noice = true,
+							doc_lines = 4,
+							max_height = 4,
+
+							floating_window = true,
+							floating_window_above_cur_line = true,
+							transparency = 20,
+							hint_enable = true,
+							hint_prefix = " ■ ",
+							fix_pos = false,
+
+							timer_interval = 100,
+							extra_trigger_chars = {},
+						}, buffer)
+					end
+
 					if config.hints == true then
 						require("lsp-inlayhints").on_attach(client, buffer)
 					end
