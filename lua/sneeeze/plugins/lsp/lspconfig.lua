@@ -14,6 +14,15 @@ return {
 			"nvim-telescope/telescope.nvim",
 
 			{
+				"folke/neodev.nvim",
+				opts = {
+					experimental = {
+						pathStrict = true,
+					},
+				},
+			},
+
+			{
 				"hrsh7th/cmp-nvim-lsp",
 				cond = function()
 					return require("lazy.core.config").plugins["nvim-cmp"] ~= nil
@@ -100,8 +109,6 @@ return {
 
 							diagnostics = {
 								globals = {
-									"vim",
-
 									"awesome",
 									"client",
 									"root",
@@ -115,13 +122,10 @@ return {
 							},
 
 							workspace = {
+								checkThirdParty = false,
 								library = {
-									[vim.fn.expand "$VIMRUNTIME/lua"] = true,
-									[vim.fn.stdpath "config" .. "/lua"] = true,
 									["/usr/share/awesome/lib"] = true,
 								},
-								maxPreload = 1000,
-								preloadFileSize = 150,
 							},
 
 							telemetry = {
