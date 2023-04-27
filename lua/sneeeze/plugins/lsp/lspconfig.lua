@@ -197,28 +197,32 @@ return {
 				bashls = {},
 			}
 
+			---@param buffer integer
+			---@return boolean
+			local has_null_ls = function(buffer)
+				return #require("null-ls.sources").get_available(vim.bo[buffer].filetype, "NULL_LS_FORMATTING") > 0
+			end
+
 			local format = function()
 				local buffer = vim.api.nvim_get_current_buf()
-				local has_null_ls = #require("null-ls.sources").get_available(
-					vim.bo[buffer].filetype,
-					"NULL_LS_FORMATTING"
-				) > 0
 
 				vim.lsp.buf.format {
 					bufnr = buffer,
 					filter = function(client)
-						if not has_null_ls then
-							return client.name ~= "null-ls"
+						if has_null_ls(buffer) then
+							return client.name == "null-ls"
 						end
 
-						return client.name == "null-ls"
+						return client.name ~= "null-ls"
 					end,
 				}
 			end
 
 			vim.g.format_on_save = true
 			local format_on_save = function(client, buffer)
-				if not client.supports_method "textDocument/formatting" then
+				local has_formatting = client.supports_method "textDocument/formatting"
+
+				if not has_formatting and not has_null_ls(buffer) then
 					return
 				end
 
