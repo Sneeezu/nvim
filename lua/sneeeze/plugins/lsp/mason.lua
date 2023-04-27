@@ -23,19 +23,6 @@ return {
 					},
 				},
 			}
-
-			local ensure_installed = {
-				"black",
-				"rustfmt",
-				"stylua",
-			}
-
-			for _, tool in ipairs(ensure_installed) do
-				local package = require("mason-registry").get_package(tool)
-				if not package:is_installed() then
-					package:install()
-				end
-			end
 		end,
 	},
 }
