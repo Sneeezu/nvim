@@ -7,10 +7,6 @@ return {
 			{ "<leader>lm", "<cmd>Mason<cr>", desc = "Mason" },
 		},
 
-		dependencies = {
-			"williamboman/mason-lspconfig.nvim",
-		},
-
 		config = function()
 			require("mason").setup {
 				ui = {
@@ -26,10 +22,6 @@ return {
 						package_uninstalled = "✗",
 					},
 				},
-			}
-
-			require("mason-lspconfig").setup {
-				automatic_installation = true,
 			}
 
 			local ensure_installed = {

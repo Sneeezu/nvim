@@ -1,18 +1,21 @@
 return {
 	{
-		"neovim/nvim-lspconfig",
-		event = { "BufReadPre", "BufNewFile" },
+		"williamboman/mason-lspconfig.nvim",
 
-		keys = {
-			{ "<leader>li", "<cmd>LspInfo<CR>" },
-			{ "<leader>lr", "<cmd>LspRestart<CR>" },
-		},
+		event = { "BufReadPre", "BufNewFile" },
 
 		dependencies = {
 			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
 			"nvim-telescope/telescope.nvim",
 			"ray-x/lsp_signature.nvim",
+
+			{
+				"neovim/nvim-lspconfig",
+				keys = {
+					{ "<leader>li", "<cmd>LspInfo<CR>" },
+					{ "<leader>lr", "<cmd>LspRestart<CR>" },
+				},
+			},
 
 			{
 				"folke/neodev.nvim",
@@ -52,6 +55,8 @@ return {
 		},
 
 		config = function()
+			require("mason-lspconfig").setup { automatic_installation = true }
+
 			local lspconfig = require "lspconfig"
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			local default_capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -302,6 +307,7 @@ return {
 					end
 
 					if config.hints == true then
+						---@diagnostic disable-next-line: missing-parameter
 						require("lsp-inlayhints").on_attach(client, buffer)
 					end
 
