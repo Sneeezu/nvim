@@ -20,8 +20,14 @@ return {
 
 			null_ls.setup {
 				sources = {
+					null_ls.builtins.diagnostics.shellcheck,
 					null_ls.builtins.formatting.stylua,
 					null_ls.builtins.formatting.black,
+
+					null_ls.builtins.formatting.shfmt.with {
+						extra_args = { "-i=4" },
+					},
+
 					null_ls.builtins.formatting.rustfmt.with {
 						extra_args = function(params)
 							local path = require "plenary.path"
