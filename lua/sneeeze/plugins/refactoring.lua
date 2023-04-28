@@ -24,16 +24,20 @@ return {
 	},
 
 	{
-		"JoosepAlviste/nvim-ts-context-commentstring",
-		lazy = true,
-	},
-
-	{
 		"numToStr/Comment.nvim",
 
 		keys = {
 			{ "gc", mode = { "n", "x" }, desc = "Comment toggle linewise" },
 			{ "gb", mode = { "n", "x" }, desc = "Comment toggle blockwise" },
+		},
+
+		dependencies = {
+			{
+				"JoosepAlviste/nvim-ts-context-commentstring",
+				dependencies = {
+					"nvim-treesitter/nvim-treesitter",
+				},
+			},
 		},
 
 		config = function()

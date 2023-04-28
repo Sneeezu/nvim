@@ -5,10 +5,6 @@ return {
 		build = ":TSUpdate",
 		event = { "BufReadPost", "BufNewFile" },
 
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter-textobjects",
-		},
-
 		config = function()
 			require("nvim-treesitter.configs").setup {
 				ensure_installed = "all",
@@ -54,17 +50,27 @@ return {
 	},
 
 	{
-		"nvim-treesitter/nvim-treesitter-context",
-		event = { "BufEnter", "BufNewFile" },
-
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		lazy = true,
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 		},
 	},
 
 	{
+		"nvim-treesitter/nvim-treesitter-context",
+		event = { "BufReadPost", "BufNewFile" },
+
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+		},
+
+		config = true,
+	},
+
+	{
 		"echasnovski/mini.ai",
-		event = { "BufEnter", "BufNewFile" },
+		event = { "BufReadPost", "BufNewFile" },
 
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
