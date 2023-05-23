@@ -199,6 +199,7 @@ return {
 				jsonls = {},
 				taplo = {},
 				bashls = {},
+				clangd = {},
 			}
 
 			---@param buffer integer
