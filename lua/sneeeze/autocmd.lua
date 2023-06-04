@@ -2,10 +2,14 @@ local api = vim.api
 
 -- NOTE: if no pattern is set, pattern will be set to "*"
 
+---@param name string
+local augroup = function(name)
+	api.nvim_create_augroup(name, { clear = true })
+end
+
 -- FIXME
-local YankGroup = api.nvim_create_augroup("YankHighlight", { clear = true })
 api.nvim_create_autocmd("TextYankPost", {
-	group = YankGroup,
+	group = augroup "YankHighlight",
 	callback = function()
 		vim.highlight.on_yank {
 			higroup = "Substitute",
@@ -13,25 +17,30 @@ api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
-local SpellGroup = api.nvim_create_augroup("Spell", { clear = true })
 api.nvim_create_autocmd("FileType", {
-	group = SpellGroup,
+	group = augroup "Spell",
 	pattern = { "markdown", "text", "gitcommit" },
 	command = "setlocal spell!",
 })
 
-local vimwikiGroup = api.nvim_create_augroup("wikiMarkdown", { clear = true })
 api.nvim_create_autocmd("FileType", {
-	group = vimwikiGroup,
+	group = augroup "WikiMarkdown",
 	pattern = "vimwiki",
 	command = "MarkdownPreviewToggle",
 })
 
 -- :help fo-table
-local foGroup = api.nvim_create_augroup("FormatOptions", { clear = true })
 api.nvim_create_autocmd("FileType", {
-	group = foGroup,
+	group = augroup "FormatOptions",
 	callback = function()
 		vim.opt.fo = vim.opt.fo - "a" - "t" - "o" + "c" + "q" + "r" - "n" + "j"
+	end,
+})
+
+api.nvim_create_autocmd("BufWritePre", {
+	group = augroup "AutoCreateDirectory",
+	callback = function(event)
+		local file = vim.loop.fs_realpath(event.match) or event.match
+		vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
 	end,
 })
