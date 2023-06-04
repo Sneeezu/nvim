@@ -23,6 +23,10 @@ return {
 					null_ls.builtins.formatting.stylua,
 					null_ls.builtins.formatting.black,
 
+					null_ls.builtins.formatting.prettier.with {
+						extra_args = { "--tab-width=4" },
+					},
+
 					null_ls.builtins.formatting.shfmt.with {
 						extra_args = { "-i=4" },
 					},
