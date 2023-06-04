@@ -23,12 +23,6 @@ api.nvim_create_autocmd("FileType", {
 	command = "setlocal spell!",
 })
 
-api.nvim_create_autocmd("FileType", {
-	group = augroup "WikiMarkdown",
-	pattern = "vimwiki",
-	command = "MarkdownPreviewToggle",
-})
-
 -- :help fo-table
 api.nvim_create_autocmd("FileType", {
 	group = augroup "FormatOptions",

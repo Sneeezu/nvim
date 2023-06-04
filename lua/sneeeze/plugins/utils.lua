@@ -29,37 +29,6 @@ return {
 	},
 
 	{
-		"vimwiki/vimwiki",
-
-		keys = {
-			{ "<leader>ww", desc = "VimwikiIndex" },
-			{ "<leader>wt", desc = "VimwikiTabIndex" },
-			{ "<leader>ws", desc = "VimwikiUISelect" },
-			{ "<leader>wi", desc = "VimwikiDiaryIndex" },
-
-			{ "<leader>w<leader>i", desc = "VimwikiDiaryGenerateLinks" },
-			{ "<leader>w<leader>w", desc = "VimwikiMakeDiaryNote" },
-			{ "<leader>w<leader>t", desc = "VimwikiTabMakeDiaryNote" },
-			{ "<leader>w<leader>y", desc = "VimwikiMakeYesterdayDiaryNote" },
-			{ "<leader>w<leader>m", desc = "VimwikiMakeTomorrowDiaryNote" },
-		},
-
-		config = function()
-			vim.g.vimwiki_list = {
-				{
-					path = "~/.local/share/vimwiki/",
-					syntax = "markdown",
-					ext = ".md",
-				},
-			}
-
-			vim.g.vimwiki_global_ext = 0
-
-			vim.fn["vimwiki#vars#init"]()
-		end,
-	},
-
-	{
 		"tpope/vim-eunuch",
 		event = { "BufReadPre", "BufNewFile" },
 

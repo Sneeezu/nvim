@@ -23,7 +23,6 @@ return {
 					fidget = true,
 					harpoon = true,
 					notify = true,
-					vimwiki = true,
 					which_key = true,
 					treesitter_context = true,
 
