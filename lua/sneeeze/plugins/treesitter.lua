@@ -65,7 +65,10 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 		},
 
-		config = true,
+		opts = {
+			max_lines = 5,
+			separator = "━",
+		},
 	},
 
 	{

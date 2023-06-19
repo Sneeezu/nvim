@@ -67,6 +67,8 @@ return {
 						DiagnosticVirtualTextWarn = { bg = colors.none },
 						DiagnosticVirtualTextError = { bg = colors.none },
 
+						TreesitterContextLineNumber = { fg = colors.surface1, bg = colors.mantle },
+
 						-- classic catppuccin
 						WhichKey = { fg = colors.flamingo },
 						WhichKeyBorder = { fg = colors.blue },
