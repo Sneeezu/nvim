@@ -288,21 +288,21 @@ return {
 		"j-hui/fidget.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 
-		config = function()
-			require("fidget").setup {
-				text = {
-					spinner = "flip",
-				},
+		tag = "legacy",
 
-				align = {
-					bottom = true,
-				},
+		opts = {
+			text = {
+				spinner = "flip",
+			},
 
-				window = {
-					relative = "editor",
-				},
-			}
-		end,
+			align = {
+				bottom = true,
+			},
+
+			window = {
+				relative = "editor",
+			},
+		},
 	},
 
 	"stevearc/dressing.nvim",
