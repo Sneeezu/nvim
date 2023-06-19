@@ -21,10 +21,14 @@ return {
 
 				integrations = {
 					fidget = true,
+					gitsigns = true,
 					harpoon = true,
 					notify = true,
-					which_key = true,
+					semantic_tokens = true,
+					telescope = true,
 					treesitter_context = true,
+					treesitter = true,
+					which_key = true,
 
 					native_lsp = {
 						enabled = true,
