@@ -7,10 +7,10 @@ return {
 		keys = {
 			{ "<C-p>", "<cmd>Telescope find_files<CR>", desc = "Find files" },
 			{ "z=", "<cmd>Telescope spell_suggest<CR>", desc = "Spell suggest" },
-			{ "<leader>fg", "<cmd>Telescope live_grep<CR>", desc = "Live grep" },
-			{ "<leader>fo", "<cmd>Telescope oldfiles<CR>", desc = "Old files" },
-			{ "<leader>fb", "<cmd>Telescope buffers<CR>", desc = "Buffers" },
-			{ "<leader>fh", "<cmd>Telescope help_tags<CR>", desc = "Help tags" },
+			{ "<leader>/", "<cmd>Telescope live_grep<CR>", desc = "Live grep" },
+			{ "<leader>o", "<cmd>Telescope oldfiles<CR>", desc = "Old files" },
+			{ "<leader>b", "<cmd>Telescope buffers<CR>", desc = "Buffers" },
+			{ "<leader>h", "<cmd>Telescope help_tags<CR>", desc = "Help tags" },
 		},
 
 		dependencies = {
