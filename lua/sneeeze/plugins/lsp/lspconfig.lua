@@ -31,26 +31,6 @@ return {
 					return require("lazy.core.config").plugins["nvim-cmp"] ~= nil
 				end,
 			},
-
-			{
-				"lvimuser/lsp-inlayhints.nvim",
-
-				opts = {
-					inlay_hints = {
-						highlight = "Whitespace",
-						labels_separator = "",
-
-						parameter_hints = {
-							prefix = " <- ",
-						},
-
-						type_hints = {
-							prefix = " => ",
-							remove_colon_start = true,
-						},
-					},
-				},
-			},
 		},
 
 		config = function()
@@ -103,8 +83,6 @@ return {
 
 			local servers = {
 				lua_ls = {
-					hints = true,
-
 					settings = {
 						Lua = {
 							runtime = {
@@ -145,8 +123,6 @@ return {
 				},
 
 				gopls = {
-					hints = true,
-
 					settings = {
 						gopls = {
 							staticcheck = true,
@@ -175,8 +151,6 @@ return {
 				},
 
 				rust_analyzer = {
-					hints = true,
-
 					settings = {
 						["rust-analyzer"] = {
 							check = {
@@ -187,8 +161,6 @@ return {
 				},
 
 				tsserver = {
-					hints = true,
-
 					settings = {
 						typescript = {
 							inlayHints = {
@@ -336,9 +308,8 @@ return {
 						}, buffer)
 					end
 
-					if config.hints == true then
-						---@diagnostic disable-next-line: missing-parameter
-						require("lsp-inlayhints").on_attach(client, buffer)
+					if client.server_capabilities.inlayHintProvider then
+						vim.lsp.buf.inlay_hint(buffer, true)
 					end
 
 					format_on_save(client, buffer)

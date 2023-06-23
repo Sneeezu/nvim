@@ -66,6 +66,7 @@ return {
 						ElDiagnosticWarn = { fg = colors.yellow, bg = colors.mantle },
 						ElDiagnosticError = { fg = colors.red, bg = colors.mantle },
 
+						LspInlayHint = { link = "Whitespace" },
 						DiagnosticVirtualTextHint = { bg = colors.none },
 						DiagnosticVirtualTextInfo = { bg = colors.none },
 						DiagnosticVirtualTextWarn = { bg = colors.none },
