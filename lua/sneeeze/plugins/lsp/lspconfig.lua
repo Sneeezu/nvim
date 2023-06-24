@@ -21,6 +21,8 @@ return {
 					hint_prefix = " ■ ",
 					fix_pos = false,
 					timer_interval = 50,
+					toggle_key = "<C-s>",
+					toggle_key_flip_floatwin_setting = true,
 				},
 			},
 
