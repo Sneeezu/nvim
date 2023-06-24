@@ -6,7 +6,23 @@ return {
 		dependencies = {
 			"williamboman/mason.nvim",
 			"nvim-telescope/telescope.nvim",
-			"ray-x/lsp_signature.nvim",
+
+			{
+				"ray-x/lsp_signature.nvim",
+
+				opts = {
+					bind = true,
+					doc_lines = 4,
+					max_height = 4,
+					floating_window = true,
+					floating_window_above_cur_line = true,
+					transparency = 20,
+					hint_enable = true,
+					hint_prefix = " ■ ",
+					fix_pos = false,
+					timer_interval = 50,
+				},
+			},
 
 			{
 				"neovim/nvim-lspconfig",
@@ -289,25 +305,6 @@ return {
 				end
 
 				config.on_attach = function(client, buffer)
-					if client.server_capabilities.signatureHelpProvider then
-						require("lsp_signature").on_attach({
-							bind = true,
-							noice = true,
-							doc_lines = 4,
-							max_height = 4,
-
-							floating_window = true,
-							floating_window_above_cur_line = true,
-							transparency = 20,
-							hint_enable = true,
-							hint_prefix = " ■ ",
-							fix_pos = false,
-
-							timer_interval = 100,
-							extra_trigger_chars = {},
-						}, buffer)
-					end
-
 					if client.server_capabilities.inlayHintProvider then
 						vim.lsp.buf.inlay_hint(buffer, true)
 					end
