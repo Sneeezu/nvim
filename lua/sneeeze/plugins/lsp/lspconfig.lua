@@ -4,12 +4,12 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 
 		dependencies = {
+			"hrsh7th/nvim-cmp",
 			"williamboman/mason.nvim",
 			"nvim-telescope/telescope.nvim",
 
 			{
 				"ray-x/lsp_signature.nvim",
-
 				opts = {
 					bind = true,
 					doc_lines = 4,
