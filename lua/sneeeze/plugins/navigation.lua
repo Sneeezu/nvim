@@ -87,7 +87,7 @@ return {
 				desc = "Add file to harpoon",
 			},
 			{
-				"<C-e>",
+				"<leader>m",
 				function()
 					require("harpoon.ui").toggle_quick_menu()
 				end,
