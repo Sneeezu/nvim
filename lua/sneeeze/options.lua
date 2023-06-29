@@ -3,7 +3,7 @@ vim.opt.guicursor = ""
 vim.g.mapleader = " "
 
 vim.opt.fileencoding = "utf-8"
-vim.opt.spelllang = "en,cs"
+vim.opt.spelllang = { "en", "cs" }
 
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
