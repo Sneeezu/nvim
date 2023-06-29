@@ -88,12 +88,11 @@ return {
 
 			{
 				"windwp/nvim-autopairs",
-				config = function()
-					require("nvim-autopairs").setup {
-						map_c_h = true,
-						map_c_w = true,
-					}
-				end,
+				opts = {
+					check_ts = true,
+					map_c_h = true,
+					map_c_w = true,
+				},
 			},
 		},
 
