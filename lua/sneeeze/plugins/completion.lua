@@ -79,6 +79,7 @@ return {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-nvim-lua",
 			"hrsh7th/cmp-nvim-lsp",
+			"f3fora/cmp-spell",
 
 			{
 				"saadparwaiz1/cmp_luasnip",
@@ -137,6 +138,7 @@ return {
 				nvim_lsp = "[LSP]",
 				path = "[Path]",
 				buffer = "[Buffer]",
+				spell = "[Spell]",
 			}
 
 			cmp.setup {
@@ -209,6 +211,15 @@ return {
 					{ name = "nvim_lsp" },
 					{ name = "path" },
 					{ name = "buffer" },
+					{
+						name = "spell",
+						option = {
+							keep_all_entries = false,
+							enable_in_context = function()
+								return vim.opt.spell
+							end,
+						},
+					},
 				},
 
 				completion = {
