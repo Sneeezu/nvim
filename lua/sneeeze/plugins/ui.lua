@@ -20,26 +20,18 @@ return {
 				},
 
 				integrations = {
-					fidget = true,
+					cmp = true,
 					gitsigns = true,
 					harpoon = true,
-					notify = true,
-					semantic_tokens = true,
-					telescope = true,
-					treesitter_context = true,
-					treesitter = true,
-					which_key = true,
-
+					mason = true,
 					native_lsp = {
 						enabled = true,
-
 						virtual_text = {
 							errors = {},
 							hints = {},
 							warnings = {},
 							information = {},
 						},
-
 						underlines = {
 							errors = { "undercurl" },
 							hints = { "undercurl" },
@@ -47,6 +39,13 @@ return {
 							information = { "undercurl" },
 						},
 					},
+					noice = true,
+					notify = true,
+					semantic_tokens = true,
+					telescope = true,
+					treesitter_context = true,
+					treesitter = true,
+					which_key = true,
 				},
 
 				custom_highlights = function(colors)
