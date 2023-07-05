@@ -176,8 +176,8 @@ return {
 					},
 
 					["<C-j>"] = cmp.mapping(function()
-						if ls.expand_or_jumpable() then
-							ls.expand_or_jump()
+						if ls.jumpable(1) then
+							ls.jump(1)
 						end
 					end, { "s", "i" }),
 
