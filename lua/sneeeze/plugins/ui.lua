@@ -88,19 +88,6 @@ return {
 	},
 
 	{
-		"rcarriga/nvim-notify",
-		config = function()
-			local notify = require "notify"
-
-			notify.setup {
-				fps = 60,
-			}
-
-			vim.notify = notify
-		end,
-	},
-
-	{
 		"tjdevries/express_line.nvim",
 		event = "VimEnter",
 
@@ -286,22 +273,140 @@ return {
 	},
 
 	{
-		"j-hui/fidget.nvim",
-		event = { "BufReadPre", "BufNewFile" },
+		"folke/noice.nvim",
+		event = { "BufReadPost", "BufNewFile" },
 
-		tag = "legacy",
+		cmd = "Noice",
+
+		keys = {
+			{
+				"<C-u>",
+				function()
+					if not require("noice.lsp").scroll(-4) then
+						return "<C-u>zz"
+					end
+				end,
+				desc = "Scroll up",
+				mode = { "i", "n", "s" },
+				expr = true,
+				silent = true,
+			},
+
+			{
+				"<C-d>",
+				function()
+					if not require("noice.lsp").scroll(4) then
+						return "<C-d>zz"
+					end
+				end,
+				desc = "Scroll down",
+				mode = { "i", "n", "s" },
+				expr = true,
+				silent = true,
+			},
+		},
+
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+
+			{
+				"rcarriga/nvim-notify",
+				opts = {
+					fps = 60,
+				},
+			},
+		},
 
 		opts = {
-			text = {
-				spinner = "flip",
+			cmdline = {
+				enabled = false,
 			},
 
-			align = {
-				bottom = true,
+			messages = {
+				enabled = false,
 			},
 
-			window = {
-				relative = "editor",
+			popupmenu = {
+				enabled = false,
+			},
+
+			notify = {
+				enabled = true,
+			},
+
+			lsp = {
+				progress = {
+					enabled = true,
+					format = "lsp_progress",
+					format_done = "lsp_progress_done",
+					throttle = 1000 / 30,
+				},
+
+				override = {
+					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+					["vim.lsp.util.stylize_markdown"] = true,
+					["cmp.entry.get_documentation"] = true,
+				},
+
+				hover = {
+					enabled = true,
+					silent = true,
+				},
+
+				signature = {
+					enabled = true,
+
+					auto_open = {
+						enabled = true,
+						trigger = true,
+						luasnip = true,
+						throttle = 50,
+					},
+				},
+
+				message = {
+					enabled = false,
+				},
+			},
+
+			health = {
+				checker = false,
+			},
+
+			smart_move = {
+				enabled = true,
+			},
+
+			presets = {
+				bottom_search = true, -- use a classic bottom cmdline for search
+				command_palette = true, -- position the cmdline and popupmenu together
+				long_message_to_split = true, -- long messages will be sent to a split
+				inc_rename = true, -- enables an input dialog for inc-rename.nvim
+				lsp_doc_border = false, -- add a border to hover docs and signature help
+			},
+
+			throttle = 1000 / 30,
+
+			views = {
+				mini = {
+					position = {
+						row = -2,
+					},
+				},
+
+				hover = {
+					border = {
+						padding = {
+							0,
+							1,
+						},
+					},
+
+					position = {
+						row = 1,
+						col = 1,
+					},
+				},
 			},
 		},
 	},

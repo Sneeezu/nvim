@@ -148,12 +148,13 @@ return {
 				},
 
 				window = {
-					completion = cmp.config.window.bordered {
-						winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+					completion = {
+						winhighlight = "Normal:NormalFloat,FloatBorder:NormalFloat,CursorLine:Visual,Search:None",
+						col_offset = 1,
 					},
 
-					documentation = cmp.config.window.bordered {
-						winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+					documentation = {
+						winhighlight = "Normal:NormalFloat,FloatBorder:NormalFloat,CursorLine:Visual,Search:None",
 					},
 				},
 

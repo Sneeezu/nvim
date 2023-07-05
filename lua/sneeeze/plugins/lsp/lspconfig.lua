@@ -9,24 +9,6 @@ return {
 			"nvim-telescope/telescope.nvim",
 
 			{
-				"ray-x/lsp_signature.nvim",
-				opts = {
-					bind = true,
-					doc_lines = 4,
-					max_height = 4,
-					floating_window = true,
-					floating_window_above_cur_line = true,
-					transparency = 20,
-					hint_enable = true,
-					hint_prefix = " ■ ",
-					fix_pos = false,
-					timer_interval = 50,
-					toggle_key = "<C-s>",
-					toggle_key_flip_floatwin_setting = true,
-				},
-			},
-
-			{
 				"neovim/nvim-lspconfig",
 				keys = {
 					{ "<leader>li", "<cmd>LspInfo<CR>" },
@@ -73,14 +55,6 @@ return {
 				border = "rounded",
 			}
 
-			vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-				border = "rounded",
-			})
-
-			vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-				border = "rounded",
-			})
-
 			vim.diagnostic.config {
 				signs = nil,
 				virtual_text = true,
@@ -90,12 +64,7 @@ return {
 
 				float = {
 					focusable = false,
-					style = "minimal",
-					border = "rounded",
 					source = "always",
-					header = "",
-					prefix = "",
-					suffix = "",
 				},
 			}
 
