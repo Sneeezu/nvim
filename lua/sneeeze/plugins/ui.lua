@@ -280,15 +280,6 @@ return {
 
 		cmd = "Noice",
 
-		dependencies = {
-			"rcarriga/nvim-notify",
-			event = "VimEnter",
-
-			opts = {
-				fps = 60,
-			},
-		},
-
 		keys = {
 			{
 				"<C-u>",
@@ -319,6 +310,15 @@ return {
 
 		dependencies = {
 			"MunifTanjim/nui.nvim",
+
+			{
+				"rcarriga/nvim-notify",
+				event = "VimEnter",
+
+				opts = {
+					fps = 60,
+				},
+			},
 		},
 
 		opts = {
