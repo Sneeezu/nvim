@@ -4,7 +4,6 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 
 		dependencies = {
-			"hrsh7th/nvim-cmp",
 			"williamboman/mason.nvim",
 			"nvim-telescope/telescope.nvim",
 
@@ -24,22 +23,12 @@ return {
 					},
 				},
 			},
-
-			{
-				"hrsh7th/cmp-nvim-lsp",
-				cond = function()
-					return require("lazy.core.config").plugins["nvim-cmp"] ~= nil
-				end,
-			},
 		},
 
 		config = function()
 			require("mason-lspconfig").setup { automatic_installation = true }
 
 			local lspconfig = require "lspconfig"
-			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			local default_capabilities = require("cmp_nvim_lsp").default_capabilities()
-
 			local signs = {
 				{ texthl = "DiagnosticSignError", text = "E" },
 				{ texthl = "DiagnosticSignWarn", text = "W" },
@@ -242,55 +231,46 @@ return {
 				})
 			end
 
-			---@diagnostic disable-next-line: unused-local
-			local function on_attach(client, buffer)
+			local function on_attach(buffer)
+				local clients = vim.lsp.get_active_clients { bufnr = buffer }
 				local function map(mode, l, r, desc)
 					vim.keymap.set(mode, l, r, { buffer = buffer, remap = false, desc = desc })
 				end
 
-				map("n", "K", vim.lsp.buf.hover, "Show documentation")
-				map("n", "gD", vim.lsp.buf.declaration, "Go to declaration")
-				map("n", "gd", require("telescope.builtin").lsp_definitions, "Go to definition(s)")
-				map("n", "gr", require("telescope.builtin").lsp_references, "Go to reference(s)")
-				map("n", "gi", require("telescope.builtin").lsp_implementations, "Go to implementation(s)")
+				for _, client in ipairs(clients) do
+					map("n", "K", vim.lsp.buf.hover, "Show documentation")
+					map("n", "gD", vim.lsp.buf.declaration, "Go to declaration")
+					map("n", "gd", require("telescope.builtin").lsp_definitions, "Go to definition(s)")
+					map("n", "gr", require("telescope.builtin").lsp_references, "Go to reference(s)")
+					map("n", "gi", require("telescope.builtin").lsp_implementations, "Go to implementation(s)")
 
-				map("n", "]d", vim.diagnostic.goto_next, "Go to next diagnostic")
-				map("n", "[d", vim.diagnostic.goto_prev, "Go to previous diagnostic")
+					map("n", "]d", vim.diagnostic.goto_next, "Go to next diagnostic")
+					map("n", "[d", vim.diagnostic.goto_prev, "Go to previous diagnostic")
 
-				map("n", "<leader>vd", vim.diagnostic.open_float, "Open diagnostic in float")
-				map("n", "<leader>vD", require("telescope.builtin").diagnostics, "Show all diagnostics")
+					map("n", "<leader>vd", vim.diagnostic.open_float, "Open diagnostic in float")
+					map("n", "<leader>va", require("telescope.builtin").diagnostics, "Show all diagnostics")
 
-				map("n", "<leader>cr", vim.lsp.buf.rename, "Rename")
-				map("n", "<leader>ca", vim.lsp.buf.code_action, "Code action")
-				map("n", "<leader>lf", format, "Format")
-			end
+					map("n", "<leader>cr", vim.lsp.buf.rename, "Rename")
+					map("n", "<leader>ca", vim.lsp.buf.code_action, "Code action")
+					map("n", "<leader>lf", format, "Format")
+					map({ "i", "s" }, "<C-s>", vim.lsp.buf.signature_help, "Signature help")
 
-			vim.tbl_deep_extend("force", capabilities, default_capabilities)
-			capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-			for server, config in pairs(servers) do
-				local custom_on_attach
-
-				if config.on_attach then
-					custom_on_attach = config.on_attach
-				end
-
-				config.on_attach = function(client, buffer)
 					if client.server_capabilities.inlayHintProvider then
-						vim.lsp.buf.inlay_hint(buffer, true)
+						vim.lsp.inlay_hint(buffer, true)
 					end
 
 					format_on_save(client, buffer)
-
-					if type(custom_on_attach) == "function" then
-						custom_on_attach(client, buffer)
-					end
-
-					on_attach(client, buffer)
 				end
+			end
 
-				config.capabilities = capabilities
+			vim.api.nvim_create_autocmd("LspAttach", {
+				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+				callback = function(ev)
+					on_attach(ev.buf)
+				end,
+			})
 
+			for server, config in pairs(servers) do
 				lspconfig[server].setup(config)
 			end
 		end,
