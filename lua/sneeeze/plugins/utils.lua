@@ -30,7 +30,7 @@ return {
 
 	{
 		"tpope/vim-eunuch",
-		event = { "BufReadPre", "BufNewFile" },
+		event = "VeryLazy",
 
 		keys = {
 			{
@@ -53,7 +53,7 @@ return {
 
 	{
 		"brenoprata10/nvim-highlight-colors",
-		event = { "BufReadPre", "BufNewFile" },
+		event = "VeryLazy",
 
 		opts = {
 			render = "background",

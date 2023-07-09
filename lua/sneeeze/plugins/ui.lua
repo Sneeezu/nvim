@@ -260,12 +260,13 @@ return {
 
 	{
 		"folke/which-key.nvim",
+		event = "VeryLazy",
 		config = true,
 	},
 
 	{
 		"crispgm/nvim-tabline",
-		event = "VimEnter",
+		event = "VeryLazy",
 
 		config = function()
 			require("tabline").setup {}
@@ -274,19 +275,19 @@ return {
 	},
 
 	{
-		"rcarriga/nvim-notify",
-		event = "VimEnter",
-
-		opts = {
-			fps = 60,
-		},
-	},
-
-	{
 		"folke/noice.nvim",
-		event = { "BufReadPost", "BufNewFile" },
+		event = "VeryLazy",
 
 		cmd = "Noice",
+
+		dependencies = {
+			"rcarriga/nvim-notify",
+			event = "VimEnter",
+
+			opts = {
+				fps = 60,
+			},
+		},
 
 		keys = {
 			{
