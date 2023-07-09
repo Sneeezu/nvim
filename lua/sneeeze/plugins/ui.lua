@@ -272,6 +272,15 @@ return {
 	},
 
 	{
+		"rcarriga/nvim-notify",
+		event = "VimEnter",
+
+		opts = {
+			fps = 60,
+		},
+	},
+
+	{
 		"folke/noice.nvim",
 		event = { "BufReadPost", "BufNewFile" },
 
@@ -307,13 +316,6 @@ return {
 
 		dependencies = {
 			"MunifTanjim/nui.nvim",
-
-			{
-				"rcarriga/nvim-notify",
-				opts = {
-					fps = 60,
-				},
-			},
 		},
 
 		opts = {
