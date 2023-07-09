@@ -1,6 +1,6 @@
-vim.opt.guicursor = ""
-
 vim.g.mapleader = " "
+
+vim.opt.guicursor = ""
 
 vim.opt.fileencoding = "utf-8"
 vim.opt.spelllang = { "en", "cs" }
@@ -59,4 +59,9 @@ vim.opt.listchars:append {
 	precedes = ">",
 	conceal = "┊",
 	nbsp = "␣",
+}
+
+vim.opt.shortmess:append {
+	I = true,
+	c = true,
 }
