@@ -8,6 +8,7 @@ return {
 		config = function()
 			require("catppuccin").setup {
 				flavour = "mocha",
+				show_end_of_buffer = true,
 
 				background = {
 					light = "latte",
