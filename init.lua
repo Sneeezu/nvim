@@ -1,4 +1,4 @@
-require "sneeeze.options"
-require "sneeeze.keymaps"
-require "sneeeze.lazy"
-require "sneeeze.autocmd"
+require "configs.options"
+require "configs.keymaps"
+require "configs.lazy"
+require "configs.autocmd"

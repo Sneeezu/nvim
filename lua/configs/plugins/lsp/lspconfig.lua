@@ -32,7 +32,7 @@ return {
 
 		config = function()
 			local lspconfig = require "lspconfig"
-			local utils = require "sneeeze.utils.lsp"
+			local utils = require "configs.utils.lsp"
 
 			utils.setup_diagnostics()
 

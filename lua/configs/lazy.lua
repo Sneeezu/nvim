@@ -13,8 +13,8 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup {
 	spec = {
-		{ import = "sneeeze.plugins" },
-		{ import = "sneeeze.plugins.lsp" },
+		{ import = "configs.plugins" },
+		{ import = "configs.plugins.lsp" },
 	},
 
 	ui = {
