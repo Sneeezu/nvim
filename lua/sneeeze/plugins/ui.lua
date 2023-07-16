@@ -64,6 +64,7 @@ return {
 						ElGitChanged = { fg = colors.yellow, bg = colors.mantle },
 						ElGitRemoved = { fg = colors.red, bg = colors.mantle },
 
+						-- TODO: use statusline bg color
 						ElDiagnosticHint = { fg = colors.teal, bg = colors.mantle },
 						ElDiagnosticInfo = { fg = colors.sky, bg = colors.mantle },
 						ElDiagnosticWarn = { fg = colors.yellow, bg = colors.mantle },
@@ -77,6 +78,7 @@ return {
 						TreesitterContextLineNumber = { fg = colors.surface1, bg = colors.mantle },
 
 						-- classic catppuccin
+						Special = { fg = colors.blue },
 						WhichKey = { fg = colors.flamingo },
 						WhichKeyBorder = { fg = colors.blue },
 						TelescopeNormal = { link = "Normal" },
