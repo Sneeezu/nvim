@@ -31,11 +31,14 @@ vim.opt.smartcase = true
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+vim.opt.winminwidth = 5
 
+vim.opt.termguicolors = true
 vim.opt.pumblend = 20 -- transparency
 vim.opt.laststatus = 3
 vim.opt.showmode = false
 vim.opt.cursorline = true
+vim.opt.conceallevel = 3
 
 vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = "80"
@@ -48,6 +51,13 @@ vim.opt.swapfile = false
 vim.opt.undofile = true
 vim.opt.undolevels = 1000
 vim.opt.undoreload = 10000
+
+if vim.fn.executable "rg" == 1 then
+	vim.opt.grepprg = "rg --vimgrep"
+end
+
+vim.opt.completeopt = "menu,menuone,noinsert"
+vim.opt.wildmode = "longest:full,full"
 
 vim.opt.list = true
 vim.opt.listchars:append {
