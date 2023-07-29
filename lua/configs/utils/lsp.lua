@@ -37,7 +37,6 @@ end
 M.format = function()
 	local buffer = vim.api.nvim_get_current_buf()
 	vim.lsp.buf.format {
-		async = true,
 		bufnr = buffer,
 		filter = function(client)
 			if has_null_ls(buffer) then
