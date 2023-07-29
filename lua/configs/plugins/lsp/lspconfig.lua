@@ -45,6 +45,7 @@ return {
 				vim.lsp.protocol.make_client_capabilities(),
 				require("cmp_nvim_lsp").default_capabilities()
 			)
+			capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 			local on_attach = function(client, buffer)
 				local function map(mode, l, r, desc)
