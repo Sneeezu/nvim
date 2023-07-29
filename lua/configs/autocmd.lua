@@ -38,3 +38,8 @@ api.nvim_create_autocmd("BufWritePre", {
 		vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
 	end,
 })
+
+api.nvim_create_autocmd("BufRead", {
+	group = augroup "Folds",
+	command = "normal! zx zR",
+})

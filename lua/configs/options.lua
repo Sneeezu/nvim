@@ -71,6 +71,12 @@ vim.opt.listchars:append {
 	nbsp = "␣",
 }
 
+vim.opt.fillchars:append {
+	foldopen = "-",
+	foldclose = "+",
+	foldsep = " ",
+}
+
 vim.opt.shortmess:append {
 	I = true,
 	c = true,
