@@ -219,6 +219,16 @@ return {
 				return string.format("[%s]", ft)
 			end
 
+			local file_format = function()
+				local ft = vim.bo.fileformat
+
+				if ft == "" then
+					ft = "None"
+				end
+
+				return string.format("[%s]", ft)
+			end
+
 			local diagnostics = require("el.diagnostic").make_buffer(function(_, _, counts)
 				local items = {}
 				if counts.errors > 0 then
@@ -254,6 +264,7 @@ return {
 						diagnostics,
 						git_changes,
 						"[%-03l:%-02c]",
+						file_format,
 						file_type,
 					}
 				end,
