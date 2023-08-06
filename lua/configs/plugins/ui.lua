@@ -320,6 +320,19 @@ return {
 				expr = true,
 				silent = true,
 			},
+
+			{
+				"<Esc>",
+				function()
+					if not require("noice.lsp.docs").on_close() then
+						return "<Esc>"
+					end
+				end,
+				desc = "Close noice",
+				mode = { "i", "n", "s" },
+				expr = true,
+				silent = true,
+			},
 		},
 
 		dependencies = {
