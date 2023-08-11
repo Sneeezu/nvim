@@ -95,7 +95,7 @@ M.on_attach = function(client, buffer)
 	map("n", "<leader>lf", M.format, "Format")
 	map({ "i", "s" }, "<C-s>", vim.lsp.buf.signature_help, "Signature help")
 
-	if client.server_capabilities.inlayHintProvider then
+	if client.supports_method "textDocument/inlayHint" then
 		vim.lsp.inlay_hint(buffer, true)
 	end
 
