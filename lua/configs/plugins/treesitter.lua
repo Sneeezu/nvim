@@ -70,7 +70,6 @@ return {
 
 		opts = {
 			max_lines = 5,
-			separator = "━",
 		},
 	},
 
