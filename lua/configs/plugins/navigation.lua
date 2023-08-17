@@ -9,8 +9,9 @@ return {
 			{ "z=", "<cmd>Telescope spell_suggest<CR>", desc = "Spell suggest" },
 			{ "<leader>/", "<cmd>Telescope live_grep<CR>", desc = "Live grep" },
 			{ "<leader>o", "<cmd>Telescope oldfiles<CR>", desc = "Old files" },
-			{ "<leader>b", "<cmd>Telescope buffers<CR>", desc = "Buffers" },
+			{ "<leader>ba", "<cmd>Telescope buffers<CR>", desc = "Buffers" },
 			{ "<leader>h", "<cmd>Telescope help_tags<CR>", desc = "Help tags" },
+			{ "<leader>bc", "<cmd>Telescope git_bcommits<CR>", desc = "Git BCommits" },
 		},
 
 		dependencies = {
