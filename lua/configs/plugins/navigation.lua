@@ -34,16 +34,10 @@ return {
 
 					multi_icon = " *",
 					sorting_strategy = "ascending",
-					layout_strategy = "bottom_pane",
 					layout_config = {
-						height = 25,
-					},
-
-					border = true,
-					borderchars = {
-						prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
-						results = { " " },
-						preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+						prompt_position = "top",
+						height = 30,
+						width = 140,
 					},
 
 					mappings = {
