@@ -27,6 +27,7 @@ vim.opt.sidescrolloff = 8
 vim.opt.autoindent = true
 vim.opt.cindent = true
 vim.opt.expandtab = true
+vim.opt.shiftround = true
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 vim.opt.tabstop = 4
