@@ -60,7 +60,6 @@ if vim.fn.executable "rg" == 1 then
 end
 
 vim.opt.completeopt = "menu,menuone,noinsert"
-vim.opt.wildmode = "longest:full,full"
 
 vim.opt.list = true
 vim.opt.listchars:append {
