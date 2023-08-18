@@ -52,6 +52,9 @@ vim.opt.undofile = true
 vim.opt.undolevels = 1000
 vim.opt.undoreload = 10000
 
+vim.opt.foldmethod = "expr"
+vim.opt.foldlevelstart = 99
+
 if vim.fn.executable "rg" == 1 then
 	vim.opt.grepprg = "rg --vimgrep"
 end
