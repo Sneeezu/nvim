@@ -4,6 +4,7 @@ vim.opt.conceallevel = 3
 vim.opt.guicursor = "" -- no cursor decorations
 vim.opt.laststatus = 3
 vim.opt.pumblend = 20 -- transparency
+vim.opt.pumheight = 15
 vim.opt.showmode = false
 vim.opt.termguicolors = true
 
