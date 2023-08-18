@@ -149,8 +149,9 @@ return {
 
 				window = {
 					completion = {
-						winhighlight = "Normal:NormalFloat,FloatBorder:NormalFloat,CursorLine:Visual,Search:None",
 						col_offset = 1,
+						scrolloff = 3,
+						winhighlight = "Normal:NormalFloat,FloatBorder:NormalFloat,CursorLine:Visual,Search:None",
 					},
 
 					documentation = {
