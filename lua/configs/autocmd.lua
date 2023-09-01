@@ -41,6 +41,6 @@ api.nvim_create_autocmd("BufWritePre", {
 
 -- NOTE: fixes folds for buffers opened via telescope
 api.nvim_create_autocmd("BufRead", {
-	group = api.nvim_create_augroup("Folds", { clear = true }),
+	group = augroup "Folds",
 	command = "normal zx",
 })
