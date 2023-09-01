@@ -75,7 +75,9 @@ return {
 						DiagnosticVirtualTextWarn = { bg = colors.none },
 						DiagnosticVirtualTextError = { bg = colors.none },
 
+						Pmenu = { bg = colors.mantle },
 						TreesitterContextLineNumber = { fg = colors.surface1, bg = colors.mantle },
+						TreesitterContextBottom = { style = {} },
 
 						-- classic catppuccin
 						Special = { fg = colors.blue },
