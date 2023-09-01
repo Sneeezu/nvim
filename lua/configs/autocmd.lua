@@ -44,3 +44,20 @@ api.nvim_create_autocmd("BufRead", {
 	group = augroup "Folds",
 	command = "normal zx",
 })
+
+api.nvim_create_autocmd("BufReadPost", {
+	group = augroup "LastLocation",
+	callback = function()
+		local exclude = { "gitcommit" }
+		local buf = api.nvim_get_current_buf()
+		if vim.tbl_contains(exclude, vim.bo[buf].filetype) then
+			return
+		end
+
+		local mark = api.nvim_buf_get_mark(buf, '"')
+		local lcount = api.nvim_buf_line_count(buf)
+		if mark[1] > 0 and mark[1] <= lcount then
+			pcall(api.nvim_win_set_cursor, 0, mark)
+		end
+	end,
+})
