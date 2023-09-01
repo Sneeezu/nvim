@@ -54,7 +54,7 @@ M.format_on_save = function(client, buffer)
 		return
 	end
 
-	vim.keymap.set("n", "<leader>lF", function()
+	vim.keymap.set("n", "<leader>F", function()
 		if not vim.g.format_on_save then
 			vim.g.format_on_save = true
 			vim.notify "Enabled format on save"
@@ -81,19 +81,37 @@ M.on_attach = function(client, buffer)
 		vim.keymap.set(mode, l, r, { buffer = buffer, remap = false, desc = desc })
 	end
 
+	map("n", "gd", function()
+		require("telescope.builtin").lsp_definitions()
+	end, "Go to definition(s)")
+
+	map("n", "gr", function()
+		require("telescope.builtin").lsp_references()
+	end, "Go to reference(s)")
+
+	map("n", "gi", function()
+		require("telescope.builtin").lsp_implementations()
+	end, "Go to implementation(s)")
+
+	map("n", "<leader>D", function()
+		require("telescope.builtin").lsp_type_definitions()
+	end, "Go to type definition")
+
 	map("n", "K", vim.lsp.buf.hover, "Show documentation")
 	map("n", "gD", vim.lsp.buf.declaration, "Go to declaration")
-	map("n", "gd", require("telescope.builtin").lsp_definitions, "Go to definition(s)")
-	map("n", "gr", require("telescope.builtin").lsp_references, "Go to reference(s)")
-	map("n", "gi", require("telescope.builtin").lsp_implementations, "Go to implementation(s)")
-	map("n", "<leader>va", require("telescope.builtin").diagnostics, "Show all diagnostics")
-	map("n", "<leader>vd", vim.diagnostic.open_float, "Open diagnostic in float")
-	map("n", "]d", vim.diagnostic.goto_next, "Go to next diagnostic")
-	map("n", "[d", vim.diagnostic.goto_prev, "Go to previous diagnostic")
 	map("n", "<leader>cr", vim.lsp.buf.rename, "Rename")
-	map("n", "<leader>ca", vim.lsp.buf.code_action, "Code action")
-	map("n", "<leader>lf", M.format, "Format")
+	map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code action")
 	map({ "i", "s" }, "<C-s>", vim.lsp.buf.signature_help, "Signature help")
+
+	map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder)
+	map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder)
+	map("n", "<leader>wl", function()
+		print(vim.inspect(vim.lsp.buf.list_workleader_folders()))
+	end)
+
+	map("n", "<leader>f", function()
+		M.format()
+	end, "Format code")
 
 	if client.supports_method "textDocument/inlayHint" then
 		vim.lsp.inlay_hint(buffer, true)

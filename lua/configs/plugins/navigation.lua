@@ -5,13 +5,62 @@ return {
 		cmd = "Telescope",
 
 		keys = {
-			{ "<C-p>", "<cmd>Telescope find_files<CR>", desc = "Find files" },
-			{ "z=", "<cmd>Telescope spell_suggest<CR>", desc = "Spell suggest" },
-			{ "<leader>/", "<cmd>Telescope live_grep<CR>", desc = "Live grep" },
-			{ "<leader>o", "<cmd>Telescope oldfiles<CR>", desc = "Old files" },
-			{ "<leader>ba", "<cmd>Telescope buffers<CR>", desc = "Buffers" },
-			{ "<leader>h", "<cmd>Telescope help_tags<CR>", desc = "Help tags" },
-			{ "<leader>bc", "<cmd>Telescope git_bcommits<CR>", desc = "Git BCommits" },
+			{
+				"<leader>E",
+				function()
+					require("telescope.builtin").diagnostics()
+				end,
+				desc = "Show all diagnostics",
+			},
+			{
+				"<C-p>",
+				function()
+					require("telescope.builtin").find_files()
+				end,
+				desc = "Find files",
+			},
+			{
+				"z=",
+				function()
+					require("telescope.builtin").spell_suggest()
+				end,
+				desc = "Spell suggest",
+			},
+			{
+				"<leader>/",
+				function()
+					require("telescope.builtin").live_grep()
+				end,
+				desc = "Live grep",
+			},
+			{
+				"<leader>o",
+				function()
+					require("telescope.builtin").oldfiles()
+				end,
+				desc = "Old files",
+			},
+			{
+				"<leader>ba",
+				function()
+					require("telescope.builtin").buffers()
+				end,
+				desc = "Buffers",
+			},
+			{
+				"<leader>h",
+				function()
+					require("telescope.builtin").help_tags()
+				end,
+				desc = "Help tags",
+			},
+			{
+				"<leader>bc",
+				function()
+					require("telescope.builtin").git_bcommits()
+				end,
+				desc = "Git BCommits",
+			},
 		},
 
 		dependencies = {

@@ -23,8 +23,16 @@ map("n", "<C-d>", "<C-d>zz")
 
 map("n", "]b", "<cmd>bnext<CR>")
 map("n", "[b", "<cmd>bprevious<CR>")
-map("n", "]q", "<cmd>cnext<CR>zz")
-map("n", "[q", "<cmd>cprevious<CR>zz")
+map("n", "<C-j>", "<cmd>cnext<CR>zz")
+map("n", "<C-k>", "<cmd>cprevious<CR>zz")
+
+map("v", "J", ":m '>+1<CR>gv=gv")
+map("v", "K", ":m '<-2<CR>gv=gv")
+
+map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open diagnostic in float" })
+map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
+map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
+map("n", "<leader>q", vim.diagnostic.setqflist, { desc = "Set quickfix list with diagnostics" })
 
 map("n", "<leader>t", vim.cmd.Ex, { desc = "Open netrw" })
 map("n", "<leader>s", "<cmd>set spell!<CR>", { desc = "Toggle spell" })
