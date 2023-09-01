@@ -34,9 +34,15 @@ M.setup_diagnostics = function()
 	setup_signs()
 end
 
-M.format = function()
+---@param async boolean|nil
+M.format = function(async)
+	if async == nil then
+		async = false
+	end
+
 	local buffer = vim.api.nvim_get_current_buf()
 	vim.lsp.buf.format {
+		async = async,
 		bufnr = buffer,
 		filter = function(client)
 			if has_null_ls(buffer) then
