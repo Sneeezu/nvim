@@ -77,7 +77,6 @@ return {
 		dependencies = {
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-nvim-lua",
 			"hrsh7th/cmp-nvim-lsp",
 			"f3fora/cmp-spell",
 
@@ -133,7 +132,6 @@ return {
 
 			local source_mapping = {
 				luasnip = "[Snip]",
-				nvim_lua = "[Lua]",
 				nvim_lsp = "[LSP]",
 				path = "[Path]",
 				buffer = "[Buffer]",
@@ -208,7 +206,6 @@ return {
 
 				sources = {
 					{ name = "luasnip" },
-					{ name = "nvim_lua" },
 					{ name = "nvim_lsp" },
 					{ name = "path" },
 					{ name = "buffer" },
