@@ -266,12 +266,19 @@ M.servers = {
 		},
 	},
 
+	bashls = {
+		settings = {
+			bashIde = {
+				shellcheckPath = "",
+			},
+		},
+	},
+
 	html = {},
 	cssls = {},
 	pyright = {},
 	jsonls = {},
 	taplo = {},
-	bashls = {},
 	clangd = {},
 }
 
