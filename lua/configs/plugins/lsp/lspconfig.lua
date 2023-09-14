@@ -34,8 +34,6 @@ return {
 			local lspconfig = require "lspconfig"
 			local utils = require "configs.utils.lsp"
 
-			utils.setup_diagnostics()
-
 			require("lspconfig.ui.windows").default_options = {
 				border = "rounded",
 			}

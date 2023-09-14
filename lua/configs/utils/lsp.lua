@@ -1,37 +1,7 @@
 local M = {}
 
-local signs = {
-	{ texthl = "DiagnosticSignError", text = "E" },
-	{ texthl = "DiagnosticSignWarn", text = "W" },
-	{ texthl = "DiagnosticSignHint", text = "H" },
-	{ texthl = "DiagnosticSignInfo", text = "I" },
-}
-
-local function setup_signs()
-	for _, sign in ipairs(signs) do
-		vim.fn.sign_define(sign.texthl, { texthl = sign.texthl, text = sign.text })
-	end
-end
-
 local has_null_ls = function(buffer)
 	return #require("null-ls.sources").get_available(vim.bo[buffer].filetype, "NULL_LS_FORMATTING") > 0
-end
-
-M.setup_diagnostics = function()
-	vim.diagnostic.config {
-		signs = nil,
-		virtual_text = true,
-		underline = true,
-		update_in_insert = true,
-		severity_sort = true,
-
-		float = {
-			focusable = false,
-			source = "always",
-		},
-	}
-
-	setup_signs()
 end
 
 ---@param async boolean|nil
