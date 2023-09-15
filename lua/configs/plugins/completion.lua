@@ -194,11 +194,21 @@ return {
 				},
 
 				formatting = {
-					format = function(entry, vim_item)
-						vim_item.kind = kind_icons[vim_item.kind]
-						local menu = source_mapping[entry.source.name]
-						vim_item.menu = menu
-						return vim_item
+					format = function(entry, item)
+						item.menu = source_mapping[entry.source.name]
+						item.kind = kind_icons[item.kind]
+
+						local content = item.abbr
+						local win_width = vim.api.nvim_win_get_width(0)
+						local max_content_width = fixed_width and fixed_width - 10 or math.floor(win_width * 0.25)
+
+						if #content > max_content_width then
+							item.abbr = vim.fn.strcharpart(content, 0, max_content_width - 1) .. "…"
+						else
+							item.abbr = content .. (" "):rep(max_content_width - #content)
+						end
+
+						return item
 					end,
 				},
 
