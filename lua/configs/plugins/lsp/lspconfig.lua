@@ -19,6 +19,7 @@ return {
 			"williamboman/mason.nvim",
 			"hrsh7th/cmp-nvim-lsp",
 			"nvim-telescope/telescope.nvim",
+			"creativenull/efmls-configs-nvim",
 
 			{
 				"folke/neodev.nvim",

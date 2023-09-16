@@ -1,8 +1,6 @@
 local M = {}
 
-local has_null_ls = function(buffer)
-	return #require("null-ls.sources").get_available(vim.bo[buffer].filetype, "NULL_LS_FORMATTING") > 0
-end
+local efm = require "configs.utils.efm"
 
 ---@param async boolean|nil
 M.format = function(async)
@@ -15,18 +13,18 @@ M.format = function(async)
 		async = async,
 		bufnr = buffer,
 		filter = function(client)
-			if has_null_ls(buffer) then
-				return client.name == "null-ls"
+			if efm.buf_has_efm(buffer) then
+				return client.name == "efm"
 			end
 
-			return client.name ~= "null-ls"
+			return client.name ~= "efm"
 		end,
 	}
 end
 
 vim.g.format_on_save = true
 M.format_on_save = function(client, buffer)
-	if not client.supports_method "textDocument/formatting" and not has_null_ls(buffer) then
+	if not client.supports_method "textDocument/formatting" and not efm.buf_has_efm(buffer) then
 		return
 	end
 
@@ -85,7 +83,7 @@ M.on_attach = function(client, buffer)
 		print(vim.inspect(vim.lsp.buf.list_workleader_folders()))
 	end)
 
-	map("n", "<leader>f", function()
+	map({ "n", "v" }, "<leader>f", function()
 		M.format()
 	end, "Format code")
 
@@ -97,6 +95,20 @@ M.on_attach = function(client, buffer)
 end
 
 M.servers = {
+	efm = {
+		filetypes = efm.filetypes,
+
+		init_options = {
+			documentFormatting = true,
+			documentRangeFormatting = true,
+		},
+
+		settings = {
+			rootMarkers = { ".git/" },
+			languages = efm.languages,
+		},
+	},
+
 	lua_ls = {
 		settings = {
 			Lua = {
